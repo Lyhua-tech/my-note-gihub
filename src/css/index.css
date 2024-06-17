@@ -256,3 +256,6 @@ template {
     border: none;
     cursor: pointer;
 }
+.modal-note{
+    visibility: hidden;
+}

@@ -13,7 +13,8 @@ function deleteNote(event) {
     }
 }
 function editNote() {
-
+    const openEdit = document.getElementsByClassName('modal-note')
+    openEdit.classList.remove('modal-note')
 }
 
 class CreateNote extends HTMLElement {
@@ -24,13 +25,12 @@ class CreateNote extends HTMLElement {
     connectedCallback() {
         let text = this.getAttribute('text');
         this.innerHTML = `
-            <div class='note-container'>
+            <div class='note-container' onClick="editNote()">
                 <div class="title-box">
                     <h1>${text}</h1>
                     <button class="remove-note">x</button>
                 </div>
                 <p>
-
                 </p>
             </div>
         `;
