@@ -202,7 +202,7 @@ template {
 .menu-container {
     width: 230px;
     height: 100%;
-    background-color: rgba(45, 41, 53, 0.2); /* Apply opacity only to the background color */
+    background-color: rgba(45, 41, 53, 0.2);
     font-family: "Libre Baskerville", serif;
     display: flex;
     flex-direction: column;
@@ -256,6 +256,18 @@ template {
     border: none;
     cursor: pointer;
 }
-.modal-note{
-    visibility: hidden;
+.close-modal {
+    display: none;
+}
+.menu-box{
+    max-width: 1600px;
+    margin: 0px auto;
+}
+.form-box {
+    margin-top: 50px;
+}
+.form-box input{
+    padding: 25px 300px;
+    border-radius: 50px;
+    border: none;
 }

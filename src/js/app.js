@@ -1,42 +1,58 @@
-function createNote(event) {
+let form = document.getElementById('form');
+let noteContainer = document.getElementById('container');
+let input = document.getElementById('text-input');
+let warn = document.getElementById('warn');
+let dataBox = [];
+
+form.addEventListener('submit', (event) => {
     event.preventDefault();
-    let textInput = document.getElementById('text-input').value;
-    let card = document.createElement('my-card');
-    card.setAttribute('text', textInput);
-    document.getElementById('card-container').appendChild(card);
+    submitConfirmation();
+});
+
+let submitConfirmation = () => {
+    if (input.value === '') {
+        warn.innerHTML = 'Please input your note';
+    } else {
+        warn.innerHTML = '';
+        addInfo(input.value);
+        createNote();
+        console.log(dataBox);
+        input.value = '';
+    }
+};
+
+let addInfo = (data) => {
+    let itemId = Math.floor(Math.random() * 9191) + 1
+    let newData = { id: itemId, title: data };
+    dataBox = [...dataBox, newData]; 
 }
 
-function deleteNote(event) {
-    const card = event.target.closest('my-card');
-    if (card) {
-        document.getElementById('card-container').removeChild(card);
-    }
-}
-function editNote() {
-    const openEdit = document.getElementsByClassName('modal-note')
-    openEdit.classList.remove('modal-note')
-}
-
-class CreateNote extends HTMLElement {
-    constructor() {
-        super();
-    }
-    
-    connectedCallback() {
-        let text = this.getAttribute('text');
-        this.innerHTML = `
-            <div class='note-container' onClick="editNote()">
+let createNote = () => {
+    noteContainer.innerHTML = ''; 
+    dataBox.map((note, index) => {
+        noteContainer.innerHTML += `
+            <div class='note-container' id='note-${index}'>
                 <div class="title-box">
-                    <h1>${text}</h1>
-                    <button class="remove-note">x</button>
+                    
+                    <h1>${note.title}</h1>
+                    <span>
+                        <i class="fa-solid fa-pen" onClick="editNote(this)"></i>
+                        <i class="fa-solid fa-minus" onClick="deleteNote()"></i>
+                    </span>
                 </div>
                 <p>
                 </p>
             </div>
         `;
+    });
+};
+let deleteNote = (index) => {
+    dataBox.splice(index, 1);
+    createNote();
+};
 
-        this.querySelector('.remove-note').addEventListener('click', deleteNote);
-    }
+let editNote = (values) => {
+    input.value = values.parentElement.previousElementSibling.innerHTML;
+    dataBox.splice(values, 1);
+    createNote();
 }
-
-customElements.define('my-card', CreateNote);
