@@ -66,7 +66,7 @@ let resetForm = () => {
 }
 
 let deleteNote = (note) => {
-    note.parentElement.parentElement.remove();
+    // note.parentElement.parentElement.remove();
     data.splice(note.parentElement.parentElement.id, 1)
     localStorage.setItem('data', JSON.stringify(data))
 }

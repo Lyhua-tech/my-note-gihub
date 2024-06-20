@@ -36,20 +36,41 @@
 
         <section class="menu-box">
             <section>
-                <form action="" id="form" class="form-box">
-                    <input type="text" id="text-input">
-                    <button type="submit">+</button>
-                </form>
-                <span id="warn"></span>
-                <div id="card-container"></div>
+                <button class="open-input" popovertarget="modal">
+                    <span>Add Note</span>
+                    <p class="add-button">+</p>
+                </button>
+                <section>
+                    <form popover id="modal">
+                        <div>
+                            <div>
+                                <div>
+                                    <h5 >Add New Task</h5>
+                                </div>
+                                <div >
+                                    <p>Task Title</p>
+                                    <input type="text" name="" id="text-input">
+                                    <div id="warn"></div>
+                                    <br>
+                                    <p>Due Date</p>
+                                    <input type="date" name="" id="date-input">
+                                    <br>
+                                    <p>Description</p>
+                                    <textarea name=""  id="text-area" cols="30" rows="5"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button">Close</button>
+                            <button type="submit" id="add">Add</button>
+                        </div>
+                    </form>
+                </section>
     
                 <div id="container">
                    
                 </div>
             </section>
-        </section>
-        <section id="modal-box" class="close-modal">
-            modal box
         </section>
     </section>
     <script src="/src/js/app.js" defer></script>
