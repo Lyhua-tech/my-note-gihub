@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Note</title>
+    <!-- link for css -->
+    <link rel="stylesheet" href="/src/css/index.css">
+    <!-- link for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         .modal {
             background-color: rgba(0, 0, 0, 0.3);
-            opacity: 0;
             position: fixed;
+            opacity: 0;
             top:0;
             left: 0;
             right: 0;
@@ -19,53 +23,170 @@
             align-items: center;
             justify-content: center;
         }
-        .modal.open{
+        .modal-inner {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 700px;
+            color: #2d2934;
+            height: 660px;
+            border-radius: 20px;
+        }
+        .modal.open {
             opacity: 1;
             z-index: 999;
         }
     </style>
 </head>
 <body>
-    <button id="open-modal">
-        open modal
-    </button>
-    <section class="modal" id="modal">
-        <form class="modal-inner">
+    <section class="main-contain">
+        <header class="nav-container">
+            <div class="logo-box">
+                <img src="/public/my-note-logo.svg" alt="">
+            </div>
+
+            <ul class="page-title">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Javascript</li>
+                <li>Python</li>
+            </ul>
             <div>
-                <div>
+                User Pic
+            </div>
+        </header>
+    </section>
+    <section class="dashboard-box">
+        <button class="open-input" id="open-modal" onclick="openModal()">
+            <span>Add Note</span>
+            <p class="add-button">+</p>
+        </button>
+        <section class="modal" id="modal">
+            <form class="modal-inner" id="note-form">
+                <div class="form-section">
                     <div>
-                        <h5 >Add New Task</h5>
+                        <h2>Add Note</h2>
                     </div>
-                    <div >
-                        <p>Task Title</p>
+                    <div class="form-box">
+                        <label>Task Title</label>
                         <input type="text" name="" id="text-input">
                         <div id="warn"></div>
                         <br>
-                        <p>Due Date</p>
+                        <label>Due Date</label>
                         <input type="date" name="" id="date-input">
                         <br>
-                        <p>Description</p>
-                        <textarea name=""  id="text-area" cols="30" rows="5"></textarea>
+                        <label>Description</label>
+                        <textarea name="" id="text-area"></textarea>
                     </div>
                 </div>
-            </div>
-            <div>
-                <button type="button" id="close-modal">Close</button>
-                <button type="submit" id="add">Add</button>
-            </div>
-        </form>
+                <div class="button-container">
+                    <button type="button" id="close-modal" onclick="closeModal()">Close</button>
+                    <button type="submit" id="add">Add</button>
+                </div>
+            </form>
+        </section>
+        <div id="container" class="note-container"></div>
     </section>
     <script>
-        const openBtn = document.getElementById('open-modal');
-        const closeBtn = document.getElementById('close-modal');
+        let form = document.getElementById('note-form');
+        let noteContainer = document.getElementById('container');
+        let inputTitle = document.getElementById('text-input');
+        let inputDate = document.getElementById('date-input');
+        let inputText = document.getElementById('text-area');
+        let warn = document.getElementById('warn');
+        let add = document.getElementById('add');
+        let dataBox = [];
         const modal = document.getElementById('modal');
+        let editIndex = null; // Track the index of the note being edited
 
-        openBtn.addEventListener('click', ()=>{
+        function openModal(){
             modal.classList.add('open');
-        })
-        closeBtn.addEventListener('click', ()=>{
-            modal.classList.remove('open')
-        })
+        }
+
+        function closeModal(){
+            modal.classList.remove('open');
+            resetForm(); // Clear form values when closing the modal
+        }
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            submitConfirmation();
+        });
+
+        let submitConfirmation = () => {
+            if (inputTitle.value === '') {
+                warn.innerHTML = 'Please input your note';
+            } else {
+                warn.innerHTML = '';
+                addInfo();
+                createNote();
+                closeModal();
+            }
+        };
+
+        let addInfo = () => {
+            const newData = { 'title': inputTitle.value, 'date': inputDate.value, 'text': inputText.value };
+            if (editIndex !== null) {
+                dataBox[editIndex] = newData;
+                editIndex = null;
+            } else {
+                dataBox.push(newData);
+            }
+            localStorage.setItem('dataBox', JSON.stringify(dataBox));
+        };
+
+        let createNote = () => {
+            noteContainer.innerHTML = '';
+            dataBox.map((note, index) => {
+                noteContainer.innerHTML += `
+                    <div class='note-box' id='${index}'>
+                        <span>${note.title}</span>
+                        <span>${note.date}</span>
+                        <span>${note.text}</span>
+                        <div class="title-box">
+                            <i class="fa-solid fa-pen" onClick="editNoteById(${index})"></i>
+                            <i class="fa-solid fa-minus" onClick="deleteNoteById(${index})"></i>
+                        </div>
+                    </div>
+                `;
+            });
+        };
+
+        let resetForm = () => {
+            inputTitle.value = '';
+            inputDate.value = '';
+            inputText.value = '';
+            warn.innerHTML = '';
+        };
+
+        let deleteNote = (index) => {
+            dataBox.splice(index, 1);
+            localStorage.setItem('dataBox', JSON.stringify(dataBox));
+            createNote();
+        };
+
+        let deleteNoteById = (index) => {
+            deleteNote(index);
+        };
+
+        let editNote = (index) => {
+            let selectedTask = dataBox[index];
+            inputTitle.value = selectedTask.title;
+            inputDate.value = selectedTask.date;
+            inputText.value = selectedTask.text;
+            editIndex = index;
+            openModal();
+        };
+
+        let editNoteById = (index) => {
+            editNote(index);
+        };
+
+        (() => {
+            dataBox = JSON.parse(localStorage.getItem('dataBox')) || [];
+            createNote();
+        })();
     </script>
 </body>
 </html>

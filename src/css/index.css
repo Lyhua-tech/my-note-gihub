@@ -235,11 +235,32 @@ template {
     height: 280px;
     border-radius: 10px;
     padding: 0px 10px;
+    position: relative;
+}
+.note-box h1
+.note-box h3
+.note-box p{
+    margin: 5px 0;
+}
+.note-box h1{
+    display: inline;
 }
 .title-box{
-    display: flex;
+    display: inline-flex;
+    gap: 20px;
     justify-content: end;
     align-items: center;
+    width: 100px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+.title-box :first-child{
+    border: none;
+    background-color: white;
+}
+.title-box i {
+    cursor: pointer;
 }
 .remove-note{
     height: 30px;
