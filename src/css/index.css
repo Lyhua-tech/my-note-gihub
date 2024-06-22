@@ -194,19 +194,17 @@ template {
     display: none;
 }
 .main-contain {
-    height: 100%;
-    display: flex;
+    background-color: rgba(45, 41, 53, 0.2);
 }
 
-.menu-container {
-    width: 230px;
-    height: 100%;
-    background-color: rgba(45, 41, 53, 0.2);
+.nav-container {
     font-family: "Libre Baskerville", serif;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    height: 150px;
+    max-width: 1600px;
+    margin: 0 auto;
 }
 
 .logo-text-box {
@@ -227,11 +225,10 @@ template {
     font-size: 24px;
     color: #d3cedc;
     display: flex;
-    flex-direction: column;
     gap: 37px;
     margin-top: 30px;
 }
-.note-container {
+.note-box {
     background-color: white;
     color: #2d2934;
     width: 390px;
@@ -241,11 +238,8 @@ template {
 }
 .title-box{
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
-}
-.title-box h1{
-    margin-top: 10px;
 }
 .remove-note{
     height: 30px;
@@ -254,32 +248,21 @@ template {
     border: none;
     cursor: pointer;
 }
-.close-modal {
-    display: none;
-}
 .menu-box{
     max-width: 1600px;
     margin: 0px auto;
-}
-.form-box {
-    margin-top: 50px;
-}
-.form-box input{
-    padding: 25px 300px;
-    border-radius: 50px;
-    border: none;
 }
 .open-input{
     background-color: white;
     width: 400px;
     height: 60px;
-    margin: 40px 0px;
+    margin: 40px auto;
     border-radius: 30px;
     display: flex;
     justify-content:space-between;
     align-items: center;
     border: none;
-    box-shadow: inset 4px 3px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 5px 4px 5px rgba(0, 0, 0, 0.25);
 }
 .add-button{
     margin-right: 10px;
@@ -296,4 +279,101 @@ template {
 }
 #warn{
     color: red;
+}
+.modal {
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    opacity: 0;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: all 0.3s ease-in-out;
+    z-index: -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-inner{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 700px;
+    color: #2d2934;
+    height: 660px;
+    border-radius: 20px;
+}
+.form-section{
+    width: 100%;
+    font-family: "Open Sans";
+    font-size: 20px;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.form-box{
+    display: flex;
+    flex-direction: column;
+}
+.form-section h2{
+    font-size: 36px;
+}
+.form-box label{
+    font-size:20px;
+}
+.form-box input{
+    padding: 10px 12px;
+    outline: none;
+}
+
+.form-box textarea{
+    padding: 10px 12px;
+    height: 280px;
+    outline: none;
+}
+.button-container{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 0 30px;
+    gap: 15px;
+}
+.button-container button{
+    padding: 10px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: larger;
+    font-weight: 600;
+}
+#close-modal{
+    background-color: #e7e3ef;
+    color: #2d2934;
+}
+#close-modal:hover{
+    background-color: #2d2934;
+    color: #e7e3ef;
+    transition: all 0.4 ease-in-out;
+}
+#add{
+    background-color: #2d2934;
+    color:#e7e3ef;
+}
+#add:hover{
+    color: #2d2934;
+    background-color: #e7e3ef;
+    transition: all 0.4 ease-in-out;
+}
+.modal.open{
+    opacity: 1;
+    z-index: 999;
+}
+.note-container{
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    margin: 0 auto;
 }

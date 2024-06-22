@@ -6,6 +6,14 @@ let inputText = document.getElementById('text-area');
 let warn = document.getElementById('warn');
 let add = document.getElementById('add');
 let dataBox = [];
+const modal = document.getElementById('modal');
+
+function openModal(){
+    modal.classList.add('open')
+}
+function closeModal(){
+    modal.classList.remove('open')
+}
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -19,11 +27,7 @@ let submitConfirmation = () => {
         warn.innerHTML = '';
         addInfo();
         createNote();
-        add.setAttribute('popovertarget', '');
-        add.click();
-        (() => {
-            add.setAttribute('popovertarget', 'modal');
-        })();
+        closeModal();
     }
 };
 
@@ -38,45 +42,19 @@ let createNote = () => {
     dataBox.map((note, index) => {
         return (
             noteContainer.innerHTML += `
-            <div class='note-container' id='${index}'>
+            <div class='note-box' id='${index}'>
                 <div class="title-box">
-                    <h1>${note.title}</h1>
-                    <span>
-                        <button class="edit-btn"><i class="fa-solid fa-pen"></i></button>
-                        <button class="delete-btn"><i class="fa-solid fa-minus"></i></button>
-                    </span>
+                    <button class="edit-btn" onClick="editNote(this)"><i class="fa-solid fa-pen"></i></button>
+                    <i class="fa-solid fa-minus" onClick="deleteNote(this)"></i>
                 </div>
+                <h1>${note.title}</h1>
                 <h3>${note.date}</h3>
                 <p>${note.text}</p>
             </div>
             `
         );
-    });
-    document.querySelectorAll('.edit-btn').forEach((btn, index) => {
-        btn.addEventListener('click', () => editNote(index));
-    });
-
-    document.querySelectorAll('.delete-btn').forEach((btn, index) => {
-        btn.addEventListener('click', () => deleteNote(index));
-    });
-
+    });    
     restartForm();
-};
-
-let deleteNote = (index) => {
-    dataBox.splice(index, 1);
-    localStorage.setItem('dataBox', JSON.stringify(dataBox));
-    createNote(); 
-};
-
-let editNote = (index) => {
-    let note = dataBox[index];
-    inputTitle.value = note.title;
-    inputDate.value = note.date;
-    inputText.value = note.text;
-    deleteNote(index); 
-    add.setAttribute('popovertarget', 'modal');
-    add.click();
 };
 
 let restartForm = () => {
@@ -84,8 +62,22 @@ let restartForm = () => {
     inputDate.value = '';
     inputText.value = '';
 };
+let deleteNote = (index) => {
+    dataBox.splice(index.parentElement.parentElement.parentElement.id, 1);
+    localStorage.setItem('dataBox', JSON.stringify(dataBox));
+    createNote();
+};
+
+let editNote = (values) => {
+    let note = values.parentElement.parentElement;
+    inputTitle.value = note.children[1].innerHTML;
+    inputDate.value = note.children[2].innerHTML;
+    inputText.value = note.children[3].innerHTML;
+    openModal();
+    deleteNote(values);
+};
 
 (() => {
     dataBox = JSON.parse(localStorage.getItem('dataBox')) || [];
-    createNote();
+    createNote(dataBox);
 })();
