@@ -1,4 +1,4 @@
-let form = document.getElementById('modal');
+let form = document.getElementById('note-form');
 let noteContainer = document.getElementById('container');
 let inputTitle = document.getElementById('text-input');
 let inputDate = document.getElementById('date-input');
@@ -7,6 +7,7 @@ let warn = document.getElementById('warn');
 let add = document.getElementById('add');
 let dataBox = [];
 const modal = document.getElementById('modal');
+let editIndex = null; // Track the index of the note being edited
 
 function openModal(){
     modal.classList.add('open');
@@ -14,6 +15,7 @@ function openModal(){
 
 function closeModal(){
     modal.classList.remove('open');
+    resetForm(); // Clear form values when closing the modal
 }
 
 form.addEventListener('submit', (event) => {
@@ -34,7 +36,12 @@ let submitConfirmation = () => {
 
 let addInfo = () => {
     const newData = { 'title': inputTitle.value, 'date': inputDate.value, 'text': inputText.value };
-    dataBox.push(newData);
+    if (editIndex !== null) {
+        dataBox[editIndex] = newData;
+        editIndex = null;
+    } else {
+        dataBox.push(newData);
+    }
     localStorage.setItem('dataBox', JSON.stringify(dataBox));
 };
 
@@ -43,23 +50,23 @@ let createNote = () => {
     dataBox.map((note, index) => {
         noteContainer.innerHTML += `
             <div class='note-box' id='${index}'>
-                <span>${note.title}</span>
-                <span>${note.date}</span>
-                <span>${note.text}</span>
+                <h1>${note.title}</h1>
+                <p>${note.text}</p>
                 <div class="title-box">
                     <i class="fa-solid fa-pen" onClick="editNoteById(${index})"></i>
                     <i class="fa-solid fa-minus" onClick="deleteNoteById(${index})"></i>
                 </div>
+                <h3>${note.date}<h3>
             </div>
         `;
     });
-    restartForm();
 };
 
-let restartForm = () => {
+let resetForm = () => {
     inputTitle.value = '';
     inputDate.value = '';
     inputText.value = '';
+    warn.innerHTML = '';
 };
 
 let deleteNote = (index) => {
@@ -72,32 +79,20 @@ let deleteNoteById = (index) => {
     deleteNote(index);
 };
 
-let editNote = (note) => {
-    let selectedTask = note.parentElement.parentElement;
-    let index = selectedTask.id; 
-    
-    // Set input fields with the selected note's values
-    inputTitle.value = selectedTask.children[0].innerHTML;
-    inputDate.value = selectedTask.children[1].innerHTML;
-    inputText.value = selectedTask.children[2].innerHTML;
-    
-    // Remove the selected note from dataBox and update localStorage
-    dataBox.splice(index, 1);
-    localStorage.setItem('dataBox', JSON.stringify(dataBox));
-    
-    // Recreate the notes list
-    createNote();
-    
-    // Open the modal for editing
+let editNote = (index) => {
+    let selectedTask = dataBox[index];
+    inputTitle.value = selectedTask.title;
+    inputDate.value = selectedTask.date;
+    inputText.value = selectedTask.text;
+    editIndex = index;
     openModal();
 };
 
 let editNoteById = (index) => {
-    let note = document.getElementById(index).querySelector('.fa-pen');
-    editNote(note);
+    editNote(index);
 };
 
 (() => {
     dataBox = JSON.parse(localStorage.getItem('dataBox')) || [];
-    createNote(dataBox); // Ensure this initializes correctly
+    createNote();
 })();

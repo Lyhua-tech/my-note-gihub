@@ -17,7 +17,6 @@ html {
 
 body {
     margin: 0;
-    height: 100vh;
     background-image: linear-gradient(to top, #d3cedc, #cac5d3, #c2bdcb, #b9b4c2, #b1acba, #a29dab, #938f9c, #85818e, #6e6a76, #57535f, #413d49, #2d2934);
 }
 
@@ -202,9 +201,9 @@ template {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 150px;
     max-width: 1600px;
     margin: 0 auto;
+    color: rgb(237, 235, 235);
 }
 
 .logo-text-box {
@@ -234,8 +233,10 @@ template {
     width: 390px;
     height: 280px;
     border-radius: 10px;
-    padding: 0px 10px;
+    padding: 10px 20px;
     position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .note-box h1
 .note-box h3
@@ -244,6 +245,25 @@ template {
 }
 .note-box h1{
     display: inline;
+    font-size: 32px;
+}
+.note-box h3 {
+    font-size: 15px;
+    color: #777; 
+    position: absolute;
+    bottom: 30px;
+}
+.note-box p {
+    font-size: 16px;
+    color: #555; 
+    line-height: 1.6; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    display: -webkit-box; 
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6; 
+    max-height: calc(1.6em * 6); 
+    margin: 10px 0; 
 }
 .title-box{
     display: inline-flex;

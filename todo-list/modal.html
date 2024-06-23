@@ -37,6 +37,24 @@
             opacity: 1;
             z-index: 999;
         }
+        .note-box h1 {
+    font-size: 32px; /* Large title font size */
+    color: #333; /* Dark color for title */
+    margin: 0 0 10px; /* Margin below title */
+}
+
+.note-box p {
+    font-size: 16px; /* Text font size */
+    color: #555; /* Darker color for text */
+    line-height: 1.6; /* Line height for readability */
+    margin: 0 0 20px; /* Margin below text */
+}
+
+.note-box h3 {
+    font-size: 14px; /* Date font size */
+    color: #777; /* Lighter color for date */
+    margin: 0; /* No margin */
+}
     </style>
 </head>
 <body>
@@ -141,9 +159,9 @@
             dataBox.map((note, index) => {
                 noteContainer.innerHTML += `
                     <div class='note-box' id='${index}'>
-                        <span>${note.title}</span>
-                        <span>${note.date}</span>
-                        <span>${note.text}</span>
+                        <h1>${note.title}</h1>
+                        <h3>${note.date}</h3>
+                        <p>${note.text}</p>
                         <div class="title-box">
                             <i class="fa-solid fa-pen" onClick="editNoteById(${index})"></i>
                             <i class="fa-solid fa-minus" onClick="deleteNoteById(${index})"></i>
