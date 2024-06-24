@@ -1,13 +1,13 @@
+let dataBox = [];
+
 let form = document.getElementById('note-form');
 let noteContainer = document.getElementById('container');
 let inputTitle = document.getElementById('text-input');
 let inputDate = document.getElementById('date-input');
 let inputText = document.getElementById('text-area');
 let warn = document.getElementById('warn');
-let add = document.getElementById('add');
-let dataBox = [];
 const modal = document.getElementById('modal');
-let editIndex = null; // Track the index of the note being edited
+let editIndex = null;
 
 function openModal(){
     modal.classList.add('open');
@@ -15,7 +15,7 @@ function openModal(){
 
 function closeModal(){
     modal.classList.remove('open');
-    resetForm(); // Clear form values when closing the modal
+    resetForm(); 
 }
 
 form.addEventListener('submit', (event) => {
@@ -47,7 +47,7 @@ let addInfo = () => {
 
 let createNote = () => {
     noteContainer.innerHTML = '';
-    dataBox.map((note, index) => {
+    dataBox.forEach((note, index) => {
         noteContainer.innerHTML += `
             <div class='note-box' id='${index}'>
                 <h1>${note.title}</h1>
@@ -56,7 +56,7 @@ let createNote = () => {
                     <i class="fa-solid fa-pen" onClick="editNoteById(${index})"></i>
                     <i class="fa-solid fa-minus" onClick="deleteNoteById(${index})"></i>
                 </div>
-                <h3>${note.date}<h3>
+                <h3>${note.date}</h3>
             </div>
         `;
     });
@@ -93,6 +93,7 @@ let editNoteById = (index) => {
 };
 
 (() => {
-    dataBox = JSON.parse(localStorage.getItem('dataBox')) || [];
+    const storedDataBox = JSON.parse(localStorage.getItem('dataBox')) || [];
+    dataBox.push(...storedDataBox);
     createNote();
 })();
