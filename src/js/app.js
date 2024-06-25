@@ -9,13 +9,13 @@ let warn = document.getElementById('warn');
 const modal = document.getElementById('modal');
 let editIndex = null;
 
-function openModal(){
+function openModal() {
     modal.classList.add('open');
 }
 
-function closeModal(){
+function closeModal() {
     modal.classList.remove('open');
-    resetForm(); 
+    resetForm();
 }
 
 form.addEventListener('submit', (event) => {
@@ -53,8 +53,9 @@ let createNote = () => {
                 <h1>${note.title}</h1>
                 <p>${note.text}</p>
                 <div class="title-box">
-                    <i class="fa-solid fa-pen" onClick="editNoteById(${index})"></i>
-                    <i class="fa-solid fa-minus" onClick="deleteNoteById(${index})"></i>
+                    <i class="fa-solid fa-eye" onclick="viewNoteById(${index})"></i>
+                    <i class="fa-solid fa-pen" onclick="editNoteById(${index})"></i>
+                    <i class="fa-solid fa-minus" onclick="deleteNoteById(${index})"></i>
                 </div>
                 <h3>${note.date}</h3>
             </div>
@@ -90,6 +91,10 @@ let editNote = (index) => {
 
 let editNoteById = (index) => {
     editNote(index);
+};
+
+let viewNoteById = (index) => {
+    window.location.href = `public/views.html?index=${index}`;
 };
 
 (() => {

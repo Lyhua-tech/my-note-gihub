@@ -10,6 +10,7 @@ let createNote = () => {
                 <h1>${note.title}</h1>
                 <p>${note.text}</p>
                 <div class="title-box">
+                    <i class="fa-solid fa-eye" onclick="viewNoteById(${index})"></i>
                     <i class="fa-solid fa-pen" onclick="editNoteById(${index})"></i>
                     <i class="fa-solid fa-minus" onclick="deleteNoteById(${index})"></i>
                 </div>
@@ -26,7 +27,15 @@ let deleteNoteById = (index) => {
 };
 
 let editNoteById = (index) => {
-    window.location.href = `edit.html?index=${index}`;
+    setTimeout(() => {
+        window.location.href = `edit.html?index=${index}`;
+    }, 100);
+};
+
+let viewNoteById = (index) => {
+    setTimeout(() => {
+        window.location.href = `view.html?index=${index}`;
+    }, 100);
 };
 
 window.onload = () => {

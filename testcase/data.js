@@ -1,11 +1,12 @@
 export let dataNote = [];
 
-export function loadDataNote() {
-    const storedDataNote = JSON.parse(localStorage.getItem('dataNote')) || [];
-    dataNote.length = 0; 
-    dataNote.push(...storedDataNote);
-}
+export const loadDataNote = () => {
+    let notes = localStorage.getItem('dataNote');
+    if (notes) {
+        dataNote = JSON.parse(notes);
+    }
+};
 
-export function saveDataNote() {
+export const saveDataNote = () => {
     localStorage.setItem('dataNote', JSON.stringify(dataNote));
-}
+};

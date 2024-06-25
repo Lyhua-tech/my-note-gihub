@@ -1,21 +1,19 @@
 import { dataNote, loadDataNote } from "./data.js";
 
-let noteContainer = document.getElementById('note-container');
+let getNoteIndexFromURL = () => {
+    let params = new URLSearchParams(window.location.search);
+    return params.get('index');
+};
 
 window.onload = () => {
     loadDataNote();
-    const params = new URLSearchParams(window.location.search);
-    const index = params.get('index');
-    if (index !== null && dataNote[index]) {
-        const note = dataNote[index];
-        noteContainer.innerHTML = `
-            <div class='note-box'>
-                <h1>${note.title}</h1>
-                <p>${note.text}</p>
-                <h3>${note.date}</h3>
-            </div>
-        `;
+    let noteIndex = getNoteIndexFromURL();
+    if (noteIndex !== null) {
+        let note = dataNote[noteIndex];
+        document.getElementById('note-title').innerText = note.title;
+        document.getElementById('note-text').innerText = note.text;
+        document.getElementById('note-date').innerText = note.date;
     } else {
-        noteContainer.innerHTML = '<p>Note not found.</p>';
+        document.getElementById('note-details').innerText = "Note not found";
     }
 };
