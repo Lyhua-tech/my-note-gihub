@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Note</title>
+    <title>Edit Note</title>
     <!-- link for css -->
     <link rel="stylesheet" href="/src/css/index.css">
     <!-- link for icons -->
@@ -16,53 +16,34 @@
                 <img src="/public/my-note-logo.svg" alt="">
             </div>
             <h2>Dairy Web Application</h2>
-            <div>
-                User Pic
-            </div>
         </header>
     </section>
     <section class="dashboard-box">
-        <button class="open-input" id="open-modal" onclick="openModal()">
-            <span>Add Note</span>
-            <p class="add-button">+</p>
-        </button>
-        <section class="modal" id="modal">
-            <form class="modal-inner" id="note-form">
+        <div class="modal-inner" id="note-form-container">
+            <form id="note-form">
                 <div class="form-section">
                     <div>
-                        <h2>Add Note</h2>
+                        <h2>Edit Note</h2>
                     </div>
                     <div class="form-box">
                         <label>Task Title</label>
-                        <input type="text" name="" id="text-input">
+                        <input type="text" id="text-input">
                         <div id="warn"></div>
                         <br>
                         <label>Due Date</label>
-                        <input type="date" name="" id="date-input">
+                        <input type="date" id="date-input">
                         <br>
                         <label>Description</label>
-                        <textarea name="" id="text-area"></textarea>
+                        <textarea id="text-area"></textarea>
                     </div>
                 </div>
                 <div class="button-container">
-                    <button type="button" id="close-modal" onclick="closeModal()">Close</button>
-                    <button type="submit" id="add">Add</button>
+                    <button type="button" onclick="cancelEdit()">Cancel</button>
+                    <button type="submit" id="update">Update</button>
                 </div>
             </form>
-        </section>
-        <div id="container" class="note-container">
-            <div class="note-box" id="0">
-                <h1>sdasfaf</h1>
-                <p>fasdaf</p>
-                <div class="title-box">
-                    <i class="fa-solid fa-eye" onclick="viewNoteById(1)"></i>
-                    <i class="fa-solid fa-pen" onclick="editNoteById(1)"></i>
-                    <i class="fa-solid fa-minus" onclick="deleteNoteById(1)"></i>
-                </div>
-                <h3></h3>
-            </div>
         </div>
     </section>
-    <script src="/src/js/app.js"></script>
+    <script src="/src/js/feature/edit.js"></script>
 </body>
 </html>

@@ -7,7 +7,6 @@ let inputDate = document.getElementById('date-input');
 let inputText = document.getElementById('text-area');
 let warn = document.getElementById('warn');
 const modal = document.getElementById('modal');
-let editIndex = null;
 
 function openModal() {
     modal.classList.add('open');
@@ -36,12 +35,7 @@ let submitConfirmation = () => {
 
 let addInfo = () => {
     const newData = { 'title': inputTitle.value, 'date': inputDate.value, 'text': inputText.value };
-    if (editIndex !== null) {
-        dataBox[editIndex] = newData;
-        editIndex = null;
-    } else {
-        dataBox.push(newData);
-    }
+    dataBox.push(newData);
     localStorage.setItem('dataBox', JSON.stringify(dataBox));
 };
 
@@ -80,17 +74,8 @@ let deleteNoteById = (index) => {
     deleteNote(index);
 };
 
-let editNote = (index) => {
-    let selectedTask = dataBox[index];
-    inputTitle.value = selectedTask.title;
-    inputDate.value = selectedTask.date;
-    inputText.value = selectedTask.text;
-    editIndex = index;
-    openModal();
-};
-
 let editNoteById = (index) => {
-    editNote(index);
+    window.location.href = `/public/pages/edit.html?index=${index}`;
 };
 
 let viewNoteById = (index) => {
