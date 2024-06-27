@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Note</title>
+    <!-- Link for CSS -->
+    <link rel="stylesheet" href="/src/css/index.css">
+    <style>
+        body{
+            height: 100vh;
+        }
+        .view-container {
+            max-width: 1000px;
+            margin: 10px auto;
+
+        }
+        .view-box {
+            display: flex;
+            flex-direction: column;
+        }
+        .view-box p, .view-box h1, .view-box h3 {
+            word-wrap: break-word;
+            word-break: break-word; 
+            margin: 0;
+        }
+        .view-box h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .view-box h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .view-box p {
+            font-size: 17px;
+            margin-right: 120px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .button-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <!-- Link for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <section class="main-contain">
+        <header class="nav-container">
+            <div class="logo-box">
+                <img src="/public/my-note-logo.svg" alt="Logo">
+            </div>
+            <h2>Diary Web Application</h2>
+            <div>
+                <img src="/public/user-pic.png" alt="User Pic">
+            </div>
+        </header>
+    </section>
+    <section>
+        <div class="view-container" id="note-view-container">
+            <div class="view-section">
+                <div class="view-box">
+                    <h1 id="text-input"></h1>
+                    <br>
+                    <h3 id="date-input"></h3>
+                    <br>
+                    <p id="text-area"></p>
+                </div>
+            </div>
+            <div class="button-container">
+                <button type="button" onclick="returnToHome()">Return</button>
+            </div>
+        </div>
+    </section>
+    <script src="/src/js/feature/view.js"></script>
+</body>
+</html>

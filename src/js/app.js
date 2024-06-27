@@ -46,12 +46,12 @@ let createNote = () => {
             <div class='note-box' id='${index}'>
                 <h1>${note.title}</h1>
                 <p>${note.text}</p>
+                <h3>${note.date}</h3>
                 <div class="title-box">
                     <i class="fa-solid fa-eye" onclick="viewNoteById(${index})"></i>
                     <i class="fa-solid fa-pen" onclick="editNoteById(${index})"></i>
                     <i class="fa-solid fa-minus" onclick="deleteNoteById(${index})"></i>
                 </div>
-                <h3>${note.date}</h3>
             </div>
         `;
     });
@@ -79,7 +79,7 @@ let editNoteById = (index) => {
 };
 
 let viewNoteById = (index) => {
-    window.location.href = `public/views.html?index=${index}`;
+    window.location.href = `/public/pages/view.html?index=${index}`;
 };
 
 (() => {

@@ -422,3 +422,8 @@ template {
     gap: 30px;
     margin: 0 auto;
 }
+.note-box p, .note-box h1, .note-box h3 {
+    word-wrap: break-word;
+    word-break: break-word; 
+    margin: 0;
+}
