@@ -1,0 +1,74 @@
+
+
+.form-section {
+    width: 100%;
+    font-family: "Open Sans";
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-section h2 {
+    font-size: 36px;
+}
+
+.form-box label {
+    font-size: 20px;
+}
+
+.form-box input {
+    outline: none;
+}
+
+.form-box textarea {
+    height: 280px;
+    outline: none;
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.button-container button {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: larger;
+    font-weight: 600;
+}
+
+@media (max-width: 480px) {
+    .modal-inner {
+        max-width: 100%;
+        width: 100%;
+        height: auto; /* Adjust height if needed */
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    .form-section h2 {
+        font-size: 24px; /* Adjust font size for smaller screens */
+    }
+
+    .form-box label {
+        font-size: 16px; /* Adjust font size for smaller screens */
+    }
+
+    .form-box textarea {
+        height: 200px; /* Adjust height for smaller screens */
+    }
+
+    .button-container button {
+        padding: 8px 20px; /* Adjust button padding for smaller screens */
+    }
+}

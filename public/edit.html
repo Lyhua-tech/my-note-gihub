@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Note</title>
+    <!-- link for css -->
+    <link rel="stylesheet" href="../src/css/edit.css">
+    <link rel="stylesheet" href="../src/css/style.css">
+    <!-- link for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <my-navbar></my-navbar>
+
+    <div class="form-container" id="note-form-container">
+        <form id="note-form">
+            <div class="form-section">
+                <div class="form-box">
+                    <input type="text" id="text-input" placeholder="Task Title">
+                    <div id="warn"></div>
+                    <br>
+                    <input type="date" id="date-input">
+                    <br>
+                    <textarea id="text-area" placeholder="Text"></textarea>
+                </div>
+            </div>
+            <div class="button-container">
+                <button type="button" onclick="cancelEdit()">Cancel</button>
+                <button type="submit" id="update">Update</button>
+            </div>
+        </form>
+    </div>
+    <script src="/src/js/edit.js"></script>
+    <script type="module" src="../src/js/components/navbar.js"></script>
+    <script type="module" src="../src/js/components/modal.js"></script>
+</body>
+</html>
