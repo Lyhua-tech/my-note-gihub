@@ -1,74 +1,83 @@
-
-
-.form-section {
-    width: 100%;
-    font-family: "Open Sans";
-    font-size: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.form-container-edit{
+    max-width: 900px;
+    margin: 20px auto;
 }
-
-.form-box {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-section h2 {
-    font-size: 36px;
-}
-
-.form-box label {
-    font-size: 20px;
-}
-
-.form-box input {
-    outline: none;
-}
-
-.form-box textarea {
-    height: 280px;
-    outline: none;
-}
-
-.button-container {
-    width: 100%;
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    gap: 15px;
-    margin-top: 10px;
-}
-
-.button-container button {
-    padding: 10px 25px;
-    border: none;
+.form-section-edit input,
+.form-section-edit textarea {
+    background-color: #f5f5f5;
+    padding: .15rem .5rem;
+    min-height: 40px;
     border-radius: 30px;
-    font-size: larger;
-    font-weight: 600;
+    outline: none;
+    border: none;
+    line-height: 1.15;
+    box-shadow: 0px 10px 20px -18px;
+    margin: 40px 0;
+    max-width: 800px;
+    width: 100%;
+    padding: 0 20px;
+    color: var(--accent-color);
+    font-family: var(--paragraph);
+    font-size: 22px;
+}
+.form-section-edit input:focus{
+    border-bottom: 2px solid var(--primary-color);
+}
+.form-section-edit input:hover{
+    outline: 1px solid var(--secondary-color);
+}
+.form-section-edit input{
+    height: 55px;
+    margin:0;
+}
+.form-section-edit textarea{
+    padding-top: 15px;
+    height: 370px;
+    margin-bottom: 20px;
+}
+.edit-btn{
+    max-width: 800px;
+}
+.edit-btn button {
+    width: 9em;
+    height: 3em;
+    border-radius: 30em;
+    font-size: 15px;
+    font-family: inherit;
+    border: 2px solid gray; /* Adjusted border thickness */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    background-color: var(--secondary-color);
+    color: var(--accent-color);
+    transition: color 0.5s ease;
 }
 
-@media (max-width: 480px) {
-    .modal-inner {
-        max-width: 100%;
-        width: 100%;
-        height: auto; /* Adjust height if needed */
-        padding: 10px; /* Adjust padding for smaller screens */
-    }
+.edit-btn button::before {
+    content: '';
+    width: 0;
+    height: 100%; /* Ensure it covers the full height of the button */
+    border-radius: 30em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.5s ease;
+    z-index: -1;
+}
 
-    .form-section h2 {
-        font-size: 24px; /* Adjust font size for smaller screens */
-    }
+.edit-btn button:hover::before {
+    width: 100%; /* Ensure it covers the full width of the button */
+}
 
-    .form-box label {
-        font-size: 16px; /* Adjust font size for smaller screens */
+.edit-btn button:hover {
+    color: var(--secondary-color); /* Change the text color on hover */
+}
+@media (max-width: 767px) {
+    .form-container-edit form{
+        margin: 0 15px;
     }
-
-    .form-box textarea {
-        height: 200px; /* Adjust height for smaller screens */
-    }
-
-    .button-container button {
-        padding: 8px 20px; /* Adjust button padding for smaller screens */
+    .form-section-edit input {
+        height: 40px;
     }
 }
