@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View</title>
+    <!-- link for css -->
+    <link rel="stylesheet" href="../src/css/style.css">
+    <link rel="stylesheet" href="../src/css/components/view.css">
+</head>
+<body>
+    <!-- Start Navbar -->
+    <my-navbar class="hidden"></my-navbar>
+    <!-- End Navbar -->
+
+    <!-- Start Main -->
+    <section>
+        <!-- return button in mobile -->
+        <div class="return-button">
+            <img src="../src/images/return.svg" alt="" onclick="returnToHome()">
+        </div>
+        <!-- view container -->
+        <div class="view-container" id="note-view-container">
+            <div class="view-section">
+                <div class="view-box">
+                    <h1 id="text-input"></h1>
+                    <br>
+                    <h3 id="date-input"></h3>
+                    <br>
+                    <p id="text-area"></p>
+                </div>
+            </div>
+            <div class="button-container return">
+                <button type="button" onclick="returnToHome()">Return</button>
+            </div>
+        </div>
+    </section>
+    <!-- End main -->
+
+    <!-- Start Footer section -->
+    <my-footer></my-footer>
+    <!-- End Footer section -->
+
+    <!-- Start Script section -->
+    <script src="../src/js/view.js"></script>
+    <script type="module" src="../src/js/components/footer.js"></script>
+    <script type="module" src="../src/js/components/navbar.js"></script>
+    <!-- End Script section -->
+</body>
+</html>

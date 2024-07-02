@@ -1,5 +1,6 @@
 footer{
     height: 100px;
+    width: 100%;
     background-color: var(--accent-color);
     position: fixed;
     bottom: 0;

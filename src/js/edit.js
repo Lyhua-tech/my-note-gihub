@@ -16,9 +16,9 @@ let updateNote = () => {
     } else {
         warn.innerHTML = '';
         const newData = { 'title': inputTitle.value, 'date': inputDate.value, 'text': inputText.value };
-        let dataNote = JSON.parse(localStorage.getItem('dataNote')) || [];
-        dataNote[editIndex] = newData;
-        localStorage.setItem('dataNote', JSON.stringify(dataNote));
+        let dataBox = JSON.parse(localStorage.getItem('dataBox')) || [];
+        dataBox[editIndex] = newData;
+        localStorage.setItem('dataBox', JSON.stringify(dataBox));
         window.location.href = '../../index.html';
     }
 };
@@ -30,8 +30,8 @@ let cancelEdit = () => {
 (() => {
     const params = new URLSearchParams(window.location.search);
     editIndex = params.get('index');
-    let dataNote = JSON.parse(localStorage.getItem('dataNote')) || [];
-    let selectedTask = dataNote[editIndex];
+    let dataBox = JSON.parse(localStorage.getItem('dataBox')) || [];
+    let selectedTask = dataBox[editIndex];
     inputTitle.value = selectedTask.title;
     inputDate.value = selectedTask.date;
     inputText.value = selectedTask.text;

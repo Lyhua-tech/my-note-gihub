@@ -1,0 +1,33 @@
+.view-container{
+    max-width: 1600px;
+    margin: 30px auto;
+    color: var(--secondary-color);
+}
+.view-section{
+    max-width: 800px;
+    margin: 0 auto;
+}
+.return {
+    position: fixed;
+    bottom: 150px;
+    right: 400px;
+}
+.return-button{
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .hidden{
+        display: none;
+    }
+    .return {
+        display: none;
+    }
+    .view-container{
+        margin: 30px;
+    }
+    .return-button{
+        display: block;
+        margin: 20px 30px;
+    }
+}

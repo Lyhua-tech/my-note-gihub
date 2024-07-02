@@ -3,7 +3,7 @@ class footerCompo extends HTMLElement{
         this.innerHTML = `
         <footer>
             <section class="center-footer">
-                <h3>Publish by Sreang Lyhour</h3>
+                <h3>Authorized by Sreang Lyhour</h3>
             </section>
         </footer>
         `

@@ -5,6 +5,7 @@
 @import url(/src/css/components/modal.css);
 @import url(/src/css/components/note.css);
 @import url('/src/css/components/footer.css');
+@import url('/src/css/components/view.css');
 @import url('/src/css/edit.css');
 *,
 *::before,
@@ -202,6 +203,7 @@ template {
 
 :root {
     /* For colors */
+    --gradiant-bg: linear-gradient(to top, #d3cedc, #cac5d3, #c2bdcb, #b9b4c2, #b1acba, #a29dab, #938f9c, #85818e, #6e6a76, #57535f, #413d49, #2d2934);;
     --accent-color: #2d2934;
     --primary-color:#A6A1AF;
     --secondary-color:#edebeb;
