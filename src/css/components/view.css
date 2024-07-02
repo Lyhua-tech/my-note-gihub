@@ -7,10 +7,12 @@
     max-width: 800px;
     margin: 0 auto;
 }
-.return {
+.return button{
     position: fixed;
     bottom: 150px;
     right: 400px;
+    background-color: var(--secondary-color);
+    color: var(--accent-color);
 }
 .return-button{
     display: none;

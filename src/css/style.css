@@ -6,7 +6,7 @@
 @import url(/src/css/components/note.css);
 @import url('/src/css/components/footer.css');
 @import url('/src/css/components/view.css');
-@import url('/src/css/edit.css');
+@import url(/src/css/components/edit.css);
 *,
 *::before,
 *::after {

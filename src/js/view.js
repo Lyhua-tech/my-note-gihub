@@ -1,10 +1,10 @@
 // define all of the variable that get value from id
-let inputTitle = document.getElementById('text-input');
-let inputDate = document.getElementById('date-input');
-let inputText = document.getElementById('text-area');
+const inputTitle = document.getElementById('text-input');
+const inputDate = document.getElementById('date-input');
+const inputText = document.getElementById('text-area');
 
 // function use to return back to homepage when click 
-let returnToHome = () => {
+const returnToHome = () => {
     window.location.href = '../../index.html';
 };
 
@@ -12,8 +12,8 @@ let returnToHome = () => {
 (() => {
     const params = new URLSearchParams(window.location.search);
     let viewIndex = params.get('index');
-    let dataBox = JSON.parse(localStorage.getItem('dataBox')) || [];
-    let selectedTask = dataBox[viewIndex];
+    let dataNote = JSON.parse(localStorage.getItem('dataNote')) || [];
+    let selectedTask = dataNote[viewIndex];
     inputTitle.innerText = selectedTask.title;
     inputDate.innerText = selectedTask.date;
     inputText.innerText = selectedTask.text;

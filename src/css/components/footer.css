@@ -2,11 +2,13 @@ footer{
     height: 100px;
     width: 100%;
     background-color: var(--accent-color);
-    position: fixed;
-    bottom: 0;
+    padding-top: 20px;
+    position: absolute;
+    bottom: 1px;
     border-top: grey solid 1px;
     color: var(--secondary-color);
     font-family: var(--title)
+    
 }
 .center-footer{
     max-width: 1400px;
@@ -17,4 +19,3 @@ footer{
     margin-top: 45px;
     text-align: center;
 }
-

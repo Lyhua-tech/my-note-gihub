@@ -20,6 +20,11 @@
     width: auto;
     height: auto;
 }
+.user-img img{
+    width: 60px;
+    border-radius: 50%;
+    border: 2px solid gray;
+}
 
 .container {
     display: none;
@@ -52,7 +57,7 @@
         order: 1;
         display: inline-block;
     }
-    .user-img {
+    .user-img{
         display: none;
     }
     .logo-box {
@@ -67,6 +72,7 @@
         white-space: nowrap;
         font-size: clamp(1rem, 2.5vw, 2rem);
         order: 2;
+        margin-left: 20px;
     }
     .logo-box img {
         margin: auto 0;

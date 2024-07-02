@@ -10,7 +10,7 @@ class NavbarCom extends HTMLElement{
 
                     <h2>Dairy Web Application</h2>
                     <div class='user-img'>
-                        User Pic
+                        <img src="/src/images/pfp-web.jpeg"
                     </div>
                 </nav>
             </header>
