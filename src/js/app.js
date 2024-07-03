@@ -51,11 +51,11 @@ const createNote = () => {
                 <h1>${note.title}</h1>
                 <p>${note.text}</p>
                 <div class="title-box">
-                    <i class="fa-solid fa-eye" onclick="viewNoteById(${index})"></i>
                     <i class="fa-solid fa-pen" onclick="editNoteById(${index})"></i>
                     <i class="fa-solid fa-minus" onclick="deleteNoteById(${index})"></i>
                 </div>
                 <h3>${note.date}</h3>
+                <i class="fa-solid fa-eye" onclick="viewNoteById(${index})"></i>
             </div>
         `;
     });
