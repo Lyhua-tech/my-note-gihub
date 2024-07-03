@@ -3,8 +3,8 @@ footer{
     width: 100%;
     background-color: var(--accent-color);
     padding-top: 20px;
-    position: absolute;
-    bottom: 1px;
+    position: fixed;
+    bottom: 0px;
     border-top: grey solid 1px;
     color: var(--secondary-color);
     font-family: var(--title)
@@ -16,6 +16,6 @@ footer{
     margin: 0 auto;
 }
 .center-footer h3{
-    margin-top: 45px;
+    margin-top: 20px;
     text-align: center;
 }
